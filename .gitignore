@@ -1,0 +1,6 @@
+############## CodeVS ##############
+.classpath
+.project
+.settings/
+.vscode/
+target/
