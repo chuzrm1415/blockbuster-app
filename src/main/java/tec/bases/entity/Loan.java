@@ -108,11 +108,11 @@ public class Loan {
     public String toString() {
         return "Loan{" +
             loanID + '\'' +
-            filmID +
-            clientID +
-            loanDate +
-            loanDevolutionDate +
-            state +
+            filmID + " " +
+            clientID + " " +
+            loanDate + " " +
+            loanDevolutionDate + " " +
+            state + " " +
             '}';
     }
 
