@@ -1,6 +1,6 @@
 package tec.bases.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Loan {
 
@@ -11,11 +11,11 @@ public class Loan {
     private Date loanDevolutionDate;
     private boolean state;
 
-    public Loan(int _ID, int _filmID, int _clientID, Date _date, Date _devolDate, boolean _state) {
+    public Loan(int _ID, int _filmID, int _clientID, Date _loanDate, Date _devolDate, boolean _state) {
         this.loanID = _ID;
         this.filmID = _filmID;
         this.clientID = _clientID;
-        this.loanDate = _date;
+        this.loanDate = _loanDate;
         this.loanDevolutionDate = _devolDate;
         this.state = _state;
     }

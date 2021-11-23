@@ -2,7 +2,9 @@ package tec.bases;
 
 public class App 
 {
+
     public static void main( String[] args ) {
-    System.out.println("xgggggggggggg");
+        ApplicationContext appContext = new ApplicationContext();
+        System.out.println( appContext.getLoans() );
     }
 }
