@@ -104,4 +104,16 @@ public class Loan {
         this.state = state;
     }
 
+    @Override
+    public String toString() {
+        return "Loan{" +
+            loanID + '\'' +
+            filmID +
+            clientID +
+            loanDate +
+            loanDevolutionDate +
+            state +
+            '}';
+    }
+
 }

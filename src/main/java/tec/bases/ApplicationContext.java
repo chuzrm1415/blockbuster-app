@@ -6,6 +6,7 @@ import tec.bases.dao.LoanDAO;
 import tec.bases.dao.daoImplementation.LoanDAOimplementation;
 import tec.bases.entity.Loan;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -37,7 +38,7 @@ public class ApplicationContext {
         return new Blockbuster(_loanDao);
     }
 
-    public List<Loan> getLoans() {
+    public List<Loan> getLoans() throws SQLException {
         return this.blockbuster.getAllLoans();
     }
     

@@ -2,18 +2,12 @@ package tec.bases.dao.daoImplementation;
 
 import tec.bases.entity.Loan;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import javax.sql.DataSource;
-
-import com.mysql.cj.jdbc.CallableStatement;
-
 import tec.bases.dao.LoanDAO;
 
 public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> implements LoanDAO {
@@ -21,32 +15,34 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
     private final DataSource dataSource;
 
     // Loans Querrys
-    private static final String FIND_ALL_LOAN_PROC = "{CALL show_loans()}";
+    private static final String FIND_ALL_LOAN_PROC = "{CALL show_loans}";
 
 
     public LoanDAOimplementation(DataSource _dataSource) {
         this.dataSource = _dataSource;
     }
 
-
+    private Connection getDBconnection() {
+        try { 
+            return this.dataSource.getConnection();
+        } catch (SQLException sqlEx) {
+            System.out.println(sqlEx.getMessage());
+            throw new RuntimeException();
+        }
+    }
 
     @Override
-    public List<Loan> findAll() {
+    public List<Loan> findAll() throws SQLException {
         List<Loan> myLoans = new ArrayList<>();
-        Connection dbConnection = null;
-
-        try {
-            dbConnection = this.dataSource.getConnection();
-            CallableStatement callStat = (CallableStatement) dbConnection.prepareCall(FIND_ALL_LOAN_PROC);
+        Connection dbConnection = getDBconnection();
+        dbConnection.setAutoCommit(false);
+        
+        try (java.sql.CallableStatement callStat = dbConnection.prepareCall(FIND_ALL_LOAN_PROC) ) {
             var resultSet = callStat.executeQuery();
             return resultSetToList(resultSet);
-        } catch (Exception e) {
-            try {
-                System.out.println(e.getMessage());
-                dbConnection.rollback();
-            } catch (SQLException sqlEx) {
-                throw new RuntimeException(sqlEx);
-            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            dbConnection.rollback();
         }
         return myLoans;
     }
@@ -88,8 +84,8 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
             loanID, 
             filmID, 
             clientID, 
-            new Date(date.getTime()), 
-            new Date(devolDate.getTime()), 
+            date, 
+            devolDate, 
             state
             );
     }
