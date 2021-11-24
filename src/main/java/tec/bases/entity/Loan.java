@@ -106,14 +106,13 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Loan{" +
-            loanID + '\'' +
-            filmID + " " +
-            clientID + " " +
-            loanDate + " " +
-            loanDevolutionDate + " " +
-            state + " " +
-            '}';
+        return "   " +
+            loanID + '\'' + "         " +
+            filmID + "          " +
+            clientID + "           " +
+            loanDate + "      " +
+            loanDevolutionDate + "        " +
+            state +
+            ' ';
     }
-
 }

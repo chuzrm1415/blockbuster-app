@@ -20,7 +20,7 @@ public class ApplicationContext {
 
     public ApplicationContext() {
         var hikariDataSource = initHikariDataSource();
-        var mySQLloans = initLoanDao(hikariDataSource);
+        LoanDAO mySQLloans = initLoanDao(hikariDataSource);
 
         this.blockbuster = initBlockBuster(mySQLloans);
     }
@@ -42,4 +42,19 @@ public class ApplicationContext {
         return this.blockbuster.getAllLoans();
     }
     
+
+    /**
+     * @return Blockbuster return the blockbuster
+     */
+    public Blockbuster getBlockbuster() {
+        return blockbuster;
+    }
+
+    /**
+     * @param blockbuster the blockbuster to set
+     */
+    public void setBlockbuster(Blockbuster blockbuster) {
+        this.blockbuster = blockbuster;
+    }
+
 }
