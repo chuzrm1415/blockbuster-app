@@ -8,7 +8,9 @@ import tec.bases.cli.loanCLI.*;
     name = "BlockbusterAPP",
     subcommands = {
         //Aqui van todos los comandos por hacer.
-        GetAllLoans.class,
+        GetAllLoansCommand.class,
+        CreateLoanCommand.class,
+        GetLoanByIDCommand.class,
         HelpCommand.class
     },
     description = "Manage the blockbuster info")

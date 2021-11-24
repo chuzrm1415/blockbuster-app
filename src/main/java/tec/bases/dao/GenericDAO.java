@@ -9,12 +9,12 @@ public interface GenericDAO<T, ID extends Serializable> {
 
     List<T> findAll() throws SQLException;
 
-    Optional<T> findByID(ID id);
+    Optional<T> findByID(ID id) throws SQLException;
 
-    void save(T t);
+    void save(T t) throws SQLException;
 
-    Optional<T> update(T t);
+    Optional<T> update(T t) throws SQLException;
 
-    void delete(ID id);
+    void delete(ID id) throws SQLException;
 
 }

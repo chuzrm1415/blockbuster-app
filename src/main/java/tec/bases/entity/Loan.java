@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Loan {
 
-    private int loanID;
-    private int filmID;
-    private int clientID;
+    private long loanID;
+    private long filmID;
+    private long clientID;
     private Date loanDate;
     private Date loanDevolutionDate;
     private boolean state;
 
-    public Loan(int _ID, int _filmID, int _clientID, Date _loanDate, Date _devolDate, boolean _state) {
+    public Loan(long _ID, long _filmID, long _clientID, Date _loanDate, Date _devolDate, boolean _state) {
         this.loanID = _ID;
         this.filmID = _filmID;
         this.clientID = _clientID;
@@ -20,45 +20,58 @@ public class Loan {
         this.state = _state;
     }
 
+    public Loan(long _filmID, long _clientID, Date _loanDate) {
+        this.loanID = 0;
+        this.filmID = _filmID;
+        this.clientID = _clientID;
+        this.loanDate = _loanDate;
+        this.loanDevolutionDate = null;
+        this.state = false;
+    }
+
+    
+
+   
+
     /**
-     * @return int return the loanID
+     * @return long return the loanID
      */
-    public int getLoanID() {
+    public long getLoanID() {
         return loanID;
     }
 
     /**
      * @param loanID the loanID to set
      */
-    public void setLoanID(int loanID) {
+    public void setLoanID(long loanID) {
         this.loanID = loanID;
     }
 
     /**
-     * @return int return the filmID
+     * @return long return the filmID
      */
-    public int getFilmID() {
+    public long getFilmID() {
         return filmID;
     }
 
     /**
      * @param filmID the filmID to set
      */
-    public void setFilmID(int filmID) {
+    public void setFilmID(long filmID) {
         this.filmID = filmID;
     }
 
     /**
-     * @return int return the clientID
+     * @return long return the clientID
      */
-    public int getClientID() {
+    public long getClientID() {
         return clientID;
     }
 
     /**
      * @param clientID the clientID to set
      */
-    public void setClientID(int clientID) {
+    public void setClientID(long clientID) {
         this.clientID = clientID;
     }
 
@@ -103,6 +116,7 @@ public class Loan {
     public void setState(boolean state) {
         this.state = state;
     }
+
 
     @Override
     public String toString() {

@@ -3,22 +3,26 @@ package tec.bases.cli.loanCLI;
 import java.sql.SQLException;
 import java.util.List;
 
+import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import tec.bases.ApplicationContext;
 import tec.bases.entity.Loan;
 
-@Command(name = "loanr",description = "Return all loans")
+@Command(name = "loanrid", description = "Return all loans")
 
-public class GetAllLoans implements Runnable {
+public class GetLoanByIDCommand implements Runnable {
+
+    @CommandLine.Parameters(paramLabel = "<film ID>", description = "Film ID")
+    private int filmID;
 
     @Override
     public void run() {
         var blockbuster = new ApplicationContext().getBlockbuster();
         try {
-            var loanList = blockbuster.getAllLoans();
+            var loanList = blockbuster.findByID(filmID);
             showInfo(loanList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -30,5 +34,6 @@ public class GetAllLoans implements Runnable {
             }
         }
     }
+    
     
 }
