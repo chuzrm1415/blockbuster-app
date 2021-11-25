@@ -22,8 +22,12 @@ public class Blockbuster {
         this.loanDao.save(_loan);
     }
 
-    public List<Loan> findByID(long _id) throws SQLException {
+    public List<Loan> findLoanByID(long _id) throws SQLException {
         List<Loan> mylist = this.loanDao.findByFilm(_id);
         return mylist;
+    }
+
+    public void deleteLoan(Long filmID, Long clientID) throws SQLException {
+        this.loanDao.deleteLoan(filmID, clientID);
     }
 }

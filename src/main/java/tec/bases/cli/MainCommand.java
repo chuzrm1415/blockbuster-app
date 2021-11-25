@@ -11,6 +11,7 @@ import tec.bases.cli.loanCLI.*;
         GetAllLoansCommand.class,
         CreateLoanCommand.class,
         GetLoanByIDCommand.class,
+        DeleteLoanCommand.class,
         HelpCommand.class
     },
     description = "Manage the blockbuster info")

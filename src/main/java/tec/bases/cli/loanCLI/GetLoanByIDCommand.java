@@ -19,7 +19,7 @@ public class GetLoanByIDCommand implements Runnable {
     public void run() {
         var blockbuster = new ApplicationContext().getBlockbuster();
         try {
-            var loanList = blockbuster.findByID(filmID);
+            var loanList = blockbuster.findLoanByID(filmID);
             showInfo(loanList);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

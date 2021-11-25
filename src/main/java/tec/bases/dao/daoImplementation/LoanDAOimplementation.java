@@ -20,6 +20,8 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
     private static final String FIND_ALL_LOAN_PROC = "{CALL show_loans}";
     private static final String INSERT_LOAN = "{CALL create_loan(?, ?, ?)}";
     private static final String FIND_LOAN_BY_ID = "{CALL find_loansByFilm(?)}";
+    private static final String DELETE_LOAN = "{CALL delete_loans(?, ?)}";
+
 
 
     public LoanDAOimplementation(DataSource _dataSource) {
@@ -64,12 +66,10 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
         try (CallableStatement callStat = dbConnection.prepareCall(FIND_LOAN_BY_ID)) {
             callStat.setLong(1, filmID);
             var resultSet = callStat.executeQuery();
-            if (resultSet.next()) {
                 //resultSet.first();
                 //var temp = resultSetToList(resultSet);
                 //System.out.println(temp.size());
-                return resultSetToList(resultSet);
-            }
+            return resultSetToList(resultSet);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             dbConnection.rollback();
@@ -96,14 +96,25 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
 
     @Override
     public Optional<Loan> update(Loan t) {
-        // TODO Auto-generated method stub
-        return null;
+        return Optional.empty();
     }
 
     @Override
-    public void delete(Long id) {
-        // TODO Auto-generated method stub
-        
+    public void delete(Long id) throws SQLException { }
+
+    @Override
+    public void deleteLoan(Long _filmID, Long _clientID) throws SQLException {
+        Connection dbConnection = getDBconnection();
+        dbConnection.setAutoCommit(false);
+
+        try (CallableStatement callStat = dbConnection.prepareCall(DELETE_LOAN)) {
+            callStat.setLong(1, _filmID);
+            callStat.setLong(2, _clientID);
+            callStat.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            dbConnection.rollback();
+        }
     }
 
     @Override

@@ -9,4 +9,6 @@ public interface LoanDAO extends GenericDAO<Loan, Long> {
 
     List<Loan> findByFilm(Long filmID) throws SQLException;
 
+    void deleteLoan(Long filmID, Long clientID) throws SQLException;
+
 }
