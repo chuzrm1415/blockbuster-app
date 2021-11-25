@@ -65,3 +65,30 @@ mvn exec:java -Dexec.args="loanrid 1"
 
 mvn exec:java -Dexec.args="loand 1 3"
 ```
+
+ ### Tabla Film:
+
+ | Comando | Funcion |
+ |---------|---------|
+ | movc + {titulo} + {fecha} + {categoria} | Crea una pelicula |
+ | movr    | Imprime todos las peliculas |
+ | movrid + {id pelicula} | Imprime la pelicula asociada |
+ | movd + {id pelicula} | Elimina la pelicula con los id's respectivos |
+ | movu + {id pelicula} + {titulo} + {fecha} + {cat} | Actualiza la pelicula con el id respectivo |
+
+Ejemplos:
+```bash
+mvn exec:java -Dexec.args="movc Titanic 1997-17-12 4" //Fecha de la forma aaaa-mm-dd
+
+mvn exec:java -Dexec.args="movr"
+
+mvn exec:java -Dexec.args="movrid 1"
+
+mvn exec:java -Dexec.args="movd 1"
+
+mvn exec:java -Dexec.args="movu 11 Titanic 1997-17-12 4"
+```
+
+
+ ### Tabla Film:
+ No implementada por cuestiones de tiempo. :c
