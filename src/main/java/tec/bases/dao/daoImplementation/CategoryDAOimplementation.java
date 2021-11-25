@@ -135,6 +135,5 @@ public class CategoryDAOimplementation extends GenericDAOimplementation<Category
             myCategorys.add(resultSetToEntity(_resultSet));
         }
         return myCategorys;
-    }
-    
+    }  
 }
