@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
 import javax.sql.DataSource;
-
 import tec.bases.dao.LoanDAO;
 
 public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> implements LoanDAO {

@@ -11,10 +11,12 @@ public class Blockbuster {
 
     private LoanDAO loanDao;
     private CategoryDAO catDao;
+    private FilmDAO filmDao;
 
-    public Blockbuster(LoanDAO _loanDao, CategoryDAO _catDao) {
+    public Blockbuster(LoanDAO _loanDao, CategoryDAO _catDao, FilmDAO _filmDao) {
         this.loanDao = _loanDao;
         this.catDao = _catDao;
+        this.filmDao = _filmDao;
     }
 
     // Loans Methods...
@@ -56,5 +58,27 @@ public class Blockbuster {
 
     public void updateCategory(Category _cat) throws SQLException {
         this.catDao.update(_cat);
+    }
+
+
+    //Film Methods...
+    public void saveFilm(Film _film) throws SQLException {
+        this.filmDao.save(_film);
+    }
+
+    public List<Film> getAllFilms() throws SQLException {
+        return this.filmDao.findAll();
+    }
+
+    public Optional<Film> findFilmsByID(Long _id) throws SQLException {
+        return this.filmDao.findByID(_id);
+    }
+
+    public void deleteFilm(Long _id) throws SQLException {
+        this.filmDao.delete(_id);
+    }
+
+    public void updateFilm(Film _film) throws SQLException {
+        this.filmDao.update(_film);
     }
 }

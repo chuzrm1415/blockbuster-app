@@ -4,6 +4,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.HelpCommand;
 import tec.bases.cli.loanCLI.*;
 import tec.bases.cli.categoryCLI.*;
+import tec.bases.cli.filmCLI.*;
 
 @Command(
     name = "BlockbusterAPP",
@@ -20,6 +21,15 @@ import tec.bases.cli.categoryCLI.*;
         GetAllCategorysCommand.class,
         GetCategoryByIDCommand.class,
         UpdateCategoryCommand.class,
+
+        //Film Commands...
+        CreateFilmCommand.class,
+        GetAllFilmsCommand.class,
+        GetFilmsByIDCommand.class,
+        DeleteFilmCommand.class,
+        UpdateFilmCommand.class,
+
+        //Help Command...
         HelpCommand.class
     },
     description = "Manage the blockbuster info")

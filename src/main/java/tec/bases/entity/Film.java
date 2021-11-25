@@ -4,30 +4,38 @@ import java.sql.Date;
 
 public class Film {
 
-    private int filmID;
+    private Long filmID;
     private String filmTittle;
     private Date filmReleaseDate;
-    private int filmCategory;
+    private Long filmCategory;
 
 
-    public Film(int _ID, String _tittle, Date _date, int _category) {
+    public Film(Long _ID, String _tittle, Date _date, Long _category) {
         this.filmID = _ID;
         this.filmTittle = _tittle;
         this.filmReleaseDate = _date;
         this.filmCategory = _category;
     }
-    
+
+    public Film(String _tittle, Date _date, Long _category) {
+        this.filmID = Long.valueOf(0);
+        this.filmTittle = _tittle;
+        this.filmReleaseDate = _date;
+        this.filmCategory = _category;
+    }
+
+
     /**
-     * @return int return the filmID
+     * @return Long return the filmID
      */
-    public int getFilmID() {
+    public Long getFilmID() {
         return filmID;
     }
 
     /**
      * @param filmID the filmID to set
      */
-    public void setFilmID(int filmID) {
+    public void setFilmID(Long filmID) {
         this.filmID = filmID;
     }
 
@@ -60,17 +68,27 @@ public class Film {
     }
 
     /**
-     * @return int return the filmCategory
+     * @return Long return the filmCategory
      */
-    public int getFilmCategory() {
+    public Long getFilmCategory() {
         return filmCategory;
     }
 
     /**
      * @param filmCategory the filmCategory to set
      */
-    public void setFilmCategory(int filmCategory) {
+    public void setFilmCategory(Long filmCategory) {
         this.filmCategory = filmCategory;
+    }
+
+    @Override
+    public String toString() {
+        return "   " +
+            this.filmID + '\'' + "         " +
+            this.filmTittle + "          " +
+            this.filmReleaseDate + "           " +
+            this.filmCategory + "      " +
+            ' ';
     }
 
 }

@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import javax.sql.DataSource;
-
 import tec.bases.dao.CategoryDAO;
 import tec.bases.entity.Category;
 

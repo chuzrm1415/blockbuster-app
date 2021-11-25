@@ -2,16 +2,12 @@ package tec.bases;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import tec.bases.dao.CategoryDAO;
-import tec.bases.dao.LoanDAO;
-import tec.bases.dao.daoImplementation.CategoryDAOimplementation;
-import tec.bases.dao.daoImplementation.LoanDAOimplementation;
-import tec.bases.entity.Loan;
-
+import tec.bases.dao.*;
+import tec.bases.dao.daoImplementation.*;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.sql.DataSource;
+import tec.bases.entity.Loan;
 import com.zaxxer.hikari.HikariConfig;
 
 
@@ -23,9 +19,10 @@ public class ApplicationContext {
     public ApplicationContext() {
         var hikariDataSource = initHikariDataSource();
         LoanDAO mySQLloans = initLoanDao(hikariDataSource);
-        CategoryDAO mySQLCat = initCategoryDao(hikariDataSource);
+        CategoryDAO mySQLcat = initCategoryDao(hikariDataSource);
+        FilmDAO mySQLfilms = initFilmDao(hikariDataSource);
 
-        this.blockbuster = initBlockBuster(mySQLloans, mySQLCat);
+        this.blockbuster = initBlockBuster(mySQLloans, mySQLcat, mySQLfilms);
     }
 
     private static HikariDataSource initHikariDataSource() {
@@ -41,8 +38,12 @@ public class ApplicationContext {
         return new CategoryDAOimplementation(dataSource);
     }
 
-    private static Blockbuster initBlockBuster(LoanDAO _loanDao, CategoryDAO _catDao) {
-        return new Blockbuster(_loanDao, _catDao);
+    private static FilmDAO initFilmDao(DataSource dataSource) {
+        return new FilmDAOimplementation(dataSource);
+    }
+
+    private static Blockbuster initBlockBuster(LoanDAO _loanDao, CategoryDAO _catDao, FilmDAO _filmDao) {
+        return new Blockbuster(_loanDao, _catDao, _filmDao);
     }
 
     public List<Loan> getLoans() throws SQLException {

@@ -6,14 +6,14 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import tec.bases.ApplicationContext;
 
-@Command(name = "loand", description = "Delete a film loan for a client")
+@Command(name = "loand", description = "Delete a film loan to a client")
 
 public class DeleteLoanCommand implements Runnable {
 
     @CommandLine.Parameters(index = "0", paramLabel = "<filmID>", description = "FilmID")
     private Long filmID;
 
-    @CommandLine.Parameters(index = "1", paramLabel = "<filmID>", description = "FilmID")
+    @CommandLine.Parameters(index = "1", paramLabel = "<clientID>", description = "clientID")
     private Long clientID;
 
 
@@ -27,8 +27,4 @@ public class DeleteLoanCommand implements Runnable {
             System.out.println(e.getMessage());
         }
     }
-
-    
-
-    
 }

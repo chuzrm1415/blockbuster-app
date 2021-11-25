@@ -8,7 +8,7 @@ import picocli.CommandLine.Command;
 import tec.bases.ApplicationContext;
 import tec.bases.entity.Loan;
 
-@Command(name = "loanrid", description = "Return all loans")
+@Command(name = "loanrid", description = "Return loan by id")
 
 public class GetLoanByIDCommand implements Runnable {
 
