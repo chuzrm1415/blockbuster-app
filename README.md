@@ -5,7 +5,7 @@
 
 
 
-Aplicación Para poner en practica los conocimientos adquiridos en el curso de Bases de datos 1.
+Aplicación para poner en practica los conocimientos adquiridos en el curso de Bases de datos 1.
 
 Esta deberia de contar con los metodos CRUD's para el mantenimiento de 4 tablas dentro de la base de datos.
 
@@ -14,7 +14,7 @@ Esta deberia de contar con los metodos CRUD's para el mantenimiento de 4 tablas 
 
 #
 ## Pre-compilación:
-```sh
+```bash
 mvn clean install
 ```
 
@@ -34,7 +34,7 @@ mvn clean install
  | catu + {id} + {descrip} | Actualiza la categoria con el id respectivo |
 
 Ejemplos:
-```sh
+```bash
 mvn exec:java -Dexec.args="catc Terror"
 
 mvn exec:java -Dexec.args="catr"
@@ -56,7 +56,7 @@ mvn exec:java -Dexec.args="catu 1 Parodia"
  | loand + {id pelicula} + {id cliente} | Elimina el prestamos con los id's respectivos |
 
 Ejemplos:
-```sh
+```bash
 mvn exec:java -Dexec.args="loanc 1 3 2021-02-12" //Fecha de la forma aaaa-mm-dd
 
 mvn exec:java -Dexec.args="loanr"
