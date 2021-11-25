@@ -2,26 +2,26 @@ package tec.bases.entity;
 
 public class Category {
 
-    private int catID;
+    private Long catID;
     private String catDescription;
 
 
-    public Category(int _ID, String _catDescrip) {
+    public Category(Long _ID, String _catDescrip) {
         this.catID = _ID;
         this.catDescription = _catDescrip;
     }
     
     /**
-     * @return int return the catID
+     * @return Long return the catID
      */
-    public int getCatID() {
+    public Long getCatID() {
         return catID;
     }
 
     /**
      * @param catID the catID to set
      */
-    public void setCatID(int catID) {
+    public void setCatID(Long catID) {
         this.catID = catID;
     }
 
@@ -37,6 +37,14 @@ public class Category {
      */
     public void setCatDescription(String catDescription) {
         this.catDescription = catDescription;
+    }
+
+    @Override
+    public String toString() {
+        return "   " +
+            this.catID + '\'' + "             " +
+            this.catDescription + " " +
+            ' ';
     }
 
 }

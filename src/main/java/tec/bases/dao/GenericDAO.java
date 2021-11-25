@@ -13,7 +13,7 @@ public interface GenericDAO<T, ID extends Serializable> {
 
     void save(T t) throws SQLException;
 
-    Optional<T> update(T t) throws SQLException;
+    void update(T t) throws SQLException;
 
     void delete(ID id) throws SQLException;
 

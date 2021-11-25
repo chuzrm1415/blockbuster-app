@@ -24,6 +24,8 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
 
 
 
+
+
     public LoanDAOimplementation(DataSource _dataSource) {
         this.dataSource = _dataSource;
     }
@@ -37,13 +39,17 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
         }
     }
 
+
+
+
+    //Methods...
     @Override
     public List<Loan> findAll() throws SQLException {
         List<Loan> myLoans = new ArrayList<>();
         Connection dbConnection = getDBconnection();
         dbConnection.setAutoCommit(false);
         
-        try (java.sql.CallableStatement callStat = dbConnection.prepareCall(FIND_ALL_LOAN_PROC) ) {
+        try (CallableStatement callStat = dbConnection.prepareCall(FIND_ALL_LOAN_PROC) ) {
             var resultSet = callStat.executeQuery();
             return resultSetToList(resultSet);
         } catch (SQLException e) {
@@ -77,13 +83,12 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
         return Collections.emptyList();
     }
 
-    
     @Override
     public void save(Loan t) throws SQLException  {
         Connection dbConnection = getDBconnection();
         dbConnection.setAutoCommit(false);
 
-        try (CallableStatement callStat = dbConnection.prepareCall(INSERT_LOAN) ) {
+        try (CallableStatement callStat = dbConnection.prepareCall(INSERT_LOAN)) {
             callStat.setLong(1, t.getFilmID());
             callStat.setLong(2, t.getClientID());
             callStat.setDate(3, (Date) t.getLoanDate());
@@ -95,9 +100,7 @@ public class LoanDAOimplementation extends GenericDAOimplementation<Loan, Long> 
     }
 
     @Override
-    public Optional<Loan> update(Loan t) {
-        return Optional.empty();
-    }
+    public void update(Loan t) { }
 
     @Override
     public void delete(Long id) throws SQLException { }

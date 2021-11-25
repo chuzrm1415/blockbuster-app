@@ -1,3 +1,3 @@
 package tec.bases.dao;
 
-public interface FilmDAO extends GenericDAO {}
+public interface FilmDAO extends GenericDAO { }

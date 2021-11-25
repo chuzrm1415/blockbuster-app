@@ -2,7 +2,9 @@ package tec.bases;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import tec.bases.dao.CategoryDAO;
 import tec.bases.dao.LoanDAO;
+import tec.bases.dao.daoImplementation.CategoryDAOimplementation;
 import tec.bases.dao.daoImplementation.LoanDAOimplementation;
 import tec.bases.entity.Loan;
 
@@ -21,8 +23,9 @@ public class ApplicationContext {
     public ApplicationContext() {
         var hikariDataSource = initHikariDataSource();
         LoanDAO mySQLloans = initLoanDao(hikariDataSource);
+        CategoryDAO mySQLCat = initCategoryDao(hikariDataSource);
 
-        this.blockbuster = initBlockBuster(mySQLloans);
+        this.blockbuster = initBlockBuster(mySQLloans, mySQLCat);
     }
 
     private static HikariDataSource initHikariDataSource() {
@@ -34,8 +37,12 @@ public class ApplicationContext {
         return new LoanDAOimplementation(dataSource);
     }
 
-    private static Blockbuster initBlockBuster(LoanDAO _loanDao) {
-        return new Blockbuster(_loanDao);
+    private static CategoryDAO initCategoryDao(DataSource dataSource) {
+        return new CategoryDAOimplementation(dataSource);
+    }
+
+    private static Blockbuster initBlockBuster(LoanDAO _loanDao, CategoryDAO _catDao) {
+        return new Blockbuster(_loanDao, _catDao);
     }
 
     public List<Loan> getLoans() throws SQLException {

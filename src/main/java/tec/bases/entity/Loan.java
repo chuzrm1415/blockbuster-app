@@ -121,12 +121,12 @@ public class Loan {
     @Override
     public String toString() {
         return "   " +
-            loanID + '\'' + "         " +
-            filmID + "          " +
-            clientID + "           " +
-            loanDate + "      " +
-            loanDevolutionDate + "        " +
-            state +
+            this.loanID + '\'' + "         " +
+            this.filmID + "          " +
+            this.clientID + "           " +
+            this.loanDate + "      " +
+            this.loanDevolutionDate + "        " +
+            this.state +
             ' ';
     }
 }
