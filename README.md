@@ -92,3 +92,11 @@ mvn exec:java -Dexec.args="movu 11 Titanic 1997-17-12 4"
 
  ### Tabla Film:
  No implementada por cuestiones de tiempo. :c
+
+
+ ## Evaluación
+
+ - La ejecución del procedimiento almacenado `delete_categoryById` reportó fallos
+ - No viene implementación para el CRUD de clientes.
+
+ Nota: 8.5
